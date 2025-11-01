@@ -49,4 +49,4 @@ def preprocess_data(data, save_path, file_path):
     return file_path
 
 if __name__ == "__main__":
-    result = preprocess_data(data="Eksperimen_SML_Rivaldy-Arrayan-Yuwono/earthquake_data_preprocessing.csv", save_path="Eksperimen_SML_Rivaldy-Arrayan-Yuwono/preprocessing/preprocessor.joblib", file_path="Eksperimen_SML_Rivaldy-Arrayan-Yuwono/preprocessing/earthquake_data_preprocessing.csv")
+    result = preprocess_data(data="Eksperimen_SML_Rivaldy-Arrayan-Yuwono/earthquake_data_tsunami.csv", save_path="Eksperimen_SML_Rivaldy-Arrayan-Yuwono/preprocessing/preprocessor.joblib", file_path="Eksperimen_SML_Rivaldy-Arrayan-Yuwono/preprocessing/earthquake_data_preprocessing.csv")
