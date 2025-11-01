@@ -6,7 +6,6 @@ from scipy.stats.mstats import winsorize
 import pandas as pd
 
 def preprocess_data(data, save_path, file_path):
-    # Membaca dataset
     df = pd.read_csv(data)
 
     # Winsorize kolom 'depth' untuk mengatasi outlier ekstrem
@@ -25,22 +24,14 @@ def preprocess_data(data, save_path, file_path):
         transformers=[
             ('num', transformer, numeric_features)
         ],
-        remainder='passthrough'  # kolom non-numerik tetap dipertahankan
+        remainder='passthrough'
     )
 
     # Terapkan transformasi ke data
     transformed_data = preprocessor.fit_transform(df)
-
-    # Ambil nama kolom baru setelah transformasi
     transformed_columns = numeric_features + [col for col in df.columns if col not in numeric_features]
-
-    # Konversi hasil transformasi menjadi DataFrame kembali
     df_transformed = pd.DataFrame(transformed_data, columns=transformed_columns)
-
-    # Simpan hasil preprocessing ke file CSV baru
     df_transformed.to_csv(file_path, index=False)
-
-    # Simpan pipeline (agar bisa digunakan untuk data baru)
     dump(preprocessor, save_path)
 
     print(f"✅ File hasil preprocessing disimpan di: {file_path}")
