@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write  # ✅ beri izin push ke repo
+
 jobs:
   preprocess:
     runs-on: ubuntu-latest
@@ -13,6 +16,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        persist-credentials: true  # ✅ penting untuk bisa push
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -32,6 +37,6 @@ jobs:
       run: |
         git config --local user.email "actions@github.com"
         git config --local user.name "github-actions"
-        git add preprocessing/namadataset_preprocessing/ || echo "No folder changes"
+        git add preprocessing/earthquake_data_preprocessing.csv preprocessing/preprocessor.joblib || echo "No file changes"
         git commit -m "Update preprocessed dataset [auto]" || echo "No changes to commit"
         git push
