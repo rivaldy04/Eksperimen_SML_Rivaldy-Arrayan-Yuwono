@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # ✅ beri izin push ke repo
+  contents: write 
 
 jobs:
   preprocess:
@@ -17,7 +17,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        persist-credentials: true  # ✅ penting untuk bisa push
+        persist-credentials: true 
 
     - name: Set up Python
       uses: actions/setup-python@v5
